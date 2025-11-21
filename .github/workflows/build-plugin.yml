@@ -31,7 +31,7 @@ jobs:
     - name: Build Plugin
       run: |
         cd Plugin
-        msbuild InsideboardWidget.Plugins.csproj /p:Configuration=Release /p:Platform="Any CPU"
+        msbuild InsideboardWidget.Plugins.csproj /p:Configuration=Release /p:Platform=AnyCPU /p:OutputPath=bin\Release\
       shell: cmd
     
     - name: Upload DLL
