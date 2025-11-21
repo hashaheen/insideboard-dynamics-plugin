@@ -1,0 +1,40 @@
+INSIDEBOARD WIDGET - ENTERPRISE SOLUTION
+========================================
+
+Server-Side JWT Generation with Custom API & C# Plugin
+
+IMPORTANT: This solution requires building a plugin DLL.
+
+Requirements:
+- Windows PC (or VM)
+- Visual Studio 2019+ (Community Edition is free)
+- .NET Framework 4.6.2+
+- Plugin Registration Tool
+
+Installation Steps:
+1. Build plugin DLL in Visual Studio (60 min, one-time)
+2. Register plugin in Dynamics (20 min)
+3. Create Custom API (15 min)
+4. Deploy JavaScript (10 min)
+5. Configure environment variables (5 min)
+
+Total Time: ~110 minutes first time
+Per Environment: ~10 minutes after plugin is built
+
+Files:
+- Plugin/                   → C# plugin project (build this first!)
+- insideboard_loader.js     → JavaScript (calls Custom API)
+- README.md                 → Complete installation guide
+
+Next Steps:
+1. Open README.md for detailed instructions
+2. Open Plugin/InsideboardWidget.Plugins.csproj in Visual Studio
+3. Follow the build guide
+
+Security:
+- Server-side JWT generation
+- Secret key never leaves server
+- Plugin runs in sandbox
+- Full audit trail
+
+Ready? Open README.md to get started!
