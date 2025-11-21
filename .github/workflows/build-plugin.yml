@@ -19,11 +19,27 @@ jobs:
     - name: Setup NuGet
       uses: nuget/setup-nuget@v1
     
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+      
     - name: Generate Strong Name Key
       run: |
         cd Plugin
-        if (-not (Test-Path key.snk)) {
-          & "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\sn.exe" -k key.snk
+        $snPath = "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\sn.exe"
+        if (-not (Test-Path $snPath)) {
+          $snPath = "C:\Program Files\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\sn.exe"
+        }
+        if (Test-Path $snPath) {
+          & $snPath -k key.snk
+        } else {
+          Write-Host "Searching for sn.exe..."
+          $snPath = Get-ChildItem "C:\Program Files*" -Recurse -Filter "sn.exe" -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+          if ($snPath) {
+            & $snPath -k key.snk
+          } else {
+            Write-Error "sn.exe not found"
+            exit 1
+          }
         }
       shell: powershell
     
