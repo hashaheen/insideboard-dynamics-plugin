@@ -38,7 +38,7 @@ jobs:
       shell: cmd
     
     - name: Upload DLL
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: InsideboardWidget-Plugin
         path: Plugin/bin/Release/InsideboardWidget.Plugins.dll
