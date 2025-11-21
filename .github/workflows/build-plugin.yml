@@ -46,7 +46,7 @@ jobs:
     - name: Restore NuGet packages
       run: |
         cd Plugin
-        nuget restore InsideboardWidget.Plugins.csproj
+        nuget restore InsideboardWidget.Plugins.csproj -PackagesDirectory packages
       shell: cmd
     
     - name: Build Plugin
